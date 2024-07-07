@@ -77,14 +77,28 @@ WSGI_APPLICATION = "signup_form.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "my_data",
+#         "USER": "root",
+#         "PASSWWORD": "",
+#         "HOST": "localhost",
+#         "PORT": 3306,
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "my_data",
-        "USER": "root",
-        "PASSWWORD": "",
-        "HOST": "localhost",
+        "NAME": "rama8601$default",
+        "USER": "rama8601",
+        "PASSWWORD": "rama12345",
+        "HOST": "rama8601.mysql.pythonanywhere-services.com",
         "PORT": 3306,
+        'OPTIONS': {
+'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+}
     }
 }
 
@@ -136,6 +150,14 @@ AUTH_USER_MODEL = 'testapp.CustomUser'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='mysql://rama8601:rama12345@rama8601.mysql.pythonanywhere-services.com:3306/rama8601$default'
+    )
+}
+
 import os
 
 
