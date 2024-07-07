@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'testapp',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +79,12 @@ WSGI_APPLICATION = "signup_form.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "my_data",
+        "USER": "root",
+        "PASSWWORD": "",
+        "HOST": "localhost",
+        "PORT": 3306,
     }
 }
 
@@ -131,4 +136,8 @@ AUTH_USER_MODEL = 'testapp.CustomUser'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+import os
+
+
+
 

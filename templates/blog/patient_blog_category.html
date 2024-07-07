@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} Posts</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex flex-row-reverse">
+        <div class="p-2"><a href="/users/logout" class="btn btn-primary">Logout</a></div>
+      </div>
+      {% if blog_posts %}
+    <div class="container">
+        <h2 class="mt-5">{{ category.name }} Posts</h2>
+        <div class="list-group">
+            {% for post in blog_posts %}
+            <li class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ post.title }}</h5>
+                <img src="{{ post.image.url }}" class="img-fluid" alt="{{ post.title }}">
+                <br>
+                <br>
+                <h6>Summary</h6>
+                <p class="mb-1">{{ post.summary|truncatewords:15 }}</p>
+            </li>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <h4>No Blog are Available</h4>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

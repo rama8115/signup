@@ -1,27 +1,41 @@
+<!-- blog/templates/blog/doctor_blog_list.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Dashboard</title>
+    <title>My Blog Posts</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="d-flex flex-row-reverse">
         <div class="p-2"><a href="/users/logout" class="btn btn-primary">Logout</a></div>
       </div>
+    {% if blog_posts %}
     <div class="container">
-        <h2 class="mt-5">Welcome to Doctor Dashboard</h2>
-        <div class="col-1">
-                    <img src="{{user.profile_picture.url}}" alt="User Profile Picture" width="50" height="50" style="border-radius:50%;">
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Last Name: {{ user.last_name }}</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
-        <br>
+        <h2 class="mt-5">My Blog Posts</h2>
+        <a href="{% url 'create_blog_post' %}" class="btn btn-success mb-3">Create New Blog</a>
+        <div class="list-group">
+            {% for post in blog_posts %}
+            <div  class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ post.title }}</h5>
+                <h6 class="mb-1">Summary</h6>
+                <p class="mb-1">{{ post.summary }}</p>
+                <h6 class="mb-1">Content</h6>
+                <p class="mb-1">{{ post.content }}</p>
+                
+            </div>
+            <br>
+            {% endfor %}
+        </div>
     </div>
-    <a href="/blog/doctor_blog_list" class="btn btn-primary">View Blog</a>
+    {% else %}
+    <h4>No Blog are Available</h4>
+    <br>
+    <br>
     <a href="{% url 'create_blog_post' %}" class="btn btn-success mb-3">Create New Blog</a>
+    {% endif %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

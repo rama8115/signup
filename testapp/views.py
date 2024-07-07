@@ -5,6 +5,7 @@ from .forms import CustomUserCreationForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)

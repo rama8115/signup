@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 
+
 class CustomUser(AbstractUser):
     USER_TYPE_CHOICES = (
         ('patient', 'Patient'),
@@ -22,4 +23,5 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
 
