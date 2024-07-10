@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-qje=r&^v!1dz92x3nofj_l(_^!fa$w1j351@909521qub@x=mx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rama8601.pythonanywhere.com']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'testapp',
     'blog',
+    'appointment',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,12 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -159,6 +166,12 @@ DATABASES = {
 }
 
 import os
+print("Database settings:", os.environ.get("DATABASES"))
+
+GOOGLE_CLIENT_ID = '499624582154-mjuj90eo98mgf361219ttnqk47j26jo0.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = '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'
+GOOGLE_REDIRECT_URI = 'https://rama8601.pythonanywhere.com/appointment/oauth2callback/'
+
 
 
 
