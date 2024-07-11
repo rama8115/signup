@@ -2,23 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Appointment
 from .forms import AppointmentForm
-from testapp.models import CustomUser  # Assuming CustomUser model in users app
+from testapp.models import CustomUser 
 from datetime import datetime, timedelta
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-
 import os
 import json
-from datetime import datetime, timedelta
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from testapp.models import CustomUser 
-from .forms import AppointmentForm
-from .models import Appointment
-from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
-from googleapiclient.discovery import build
+
 
 CREDENTIALS_FILE_PATH = os.path.join(os.path.dirname(__file__), 'credentials.json')
 CLIENT_SECRET_FILE_PATH = os.path.join(os.path.dirname(__file__), 'client_secret.json')
